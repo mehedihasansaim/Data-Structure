@@ -3,7 +3,8 @@
 #define MAX_SIZE 500
 #include <string.h>
 
-struct Node {
+struct Node
+{
     int price;
     char data[100]; // Assuming a maximum string length of 100 characters
     struct Node *next;
@@ -63,6 +64,7 @@ void push()
         newNode->next = top;
         top = newNode;
         printf("\nAdd item-%d in your order list for table %d\n", x, table_num);
+        printf("-----------------------------------------------------\n");
         num = table_num;
     }
 }
@@ -180,7 +182,7 @@ int main()
     {
 
         int id;
-        printf(" For customer press 1\n For management press any integer number\n Press:");
+        printf(" \t\t\t\t For customer press 1\n \t\t\t\t For management press any integer number\n\n \t\t\t\t Press:");
         scanf("%d",&id);
 
         if(id == 1)
@@ -190,7 +192,7 @@ int main()
             int choice = 0;
             while (choice != 4)
             {
-                printf("-------------------------------------------\n");
+                printf("-----------------------------------------------------\n");
                 printf("1. Add your order\n");
                 printf("2. Remove order from list\n");
                 printf("3. Show your order\n");
@@ -212,7 +214,7 @@ int main()
                 }
                 else if (choice == 4)
                 {
-                    printf("Your order is accepted.\n");
+                    printf("Your order is accepted.\n\n");
                 }
                 else
                 {
@@ -228,12 +230,12 @@ int main()
         {
             printf("\n\t\t\t\t\tWelcome to our management system\n\n");
             int key;
-            printf("Select your option: \n 1. Deliver your customer order. \n 2. Edit Your Menu. \n Press: ");
+            printf("Select your option: \n\n1. Deliver your customer order. \n2. Edit Your Menu. \nPress: ");
             scanf("%d", &key);
 
             if(key == 1)
             {
-    /*============================================  Queue starts here ================================================================= */
+                /*============================================  Queue starts here ================================================================= */
                 int x;
                 if (top == NULL)
                 {
@@ -278,7 +280,7 @@ int main()
                         {
                             enqueue(array[i]);
                         }
-                        printf("Successfully stored all customers order.");
+                        printf("Successfully stored all customers order.\n");
 
                     }
                     else if(choice == 2)
@@ -292,7 +294,8 @@ int main()
                     }
                     else if(choice == 4)
                     {
-                        printf("\n Exit point");
+                        printf("\nExit point\n");
+                        printf("-----------------------------------------------------\n");
                     }
                     else
                     {
@@ -300,24 +303,24 @@ int main()
                     }
                 }
             }
-    /*============================================  Link list starts here ================================================================= */
+            /*============================================  Link list starts here ================================================================= */
             else if(key == 2)
             {
-               int n;
-    printf("Enter the number of items you want to add: ");
-    scanf("%d", &n);
+                int n;
+                printf("\nEnter the number of items you want to add: ");
+                scanf("%d", &n);
 
-    createNode(n);
-    display();
+                createNode(n);
+                display();
 
-    insertBeg();
-    display();
+                insertBeg();
+                display();
 
-    insertMid();
-    display();
+                insertMid();
+                display();
 
-    insertEnd();
-    display();
+                insertEnd();
+                display();
 
             }
         }
@@ -340,7 +343,8 @@ int main()
 
 
 
-void createNode(int n) {
+void createNode(int n)
+{
     head = (menu *)malloc(sizeof(menu));
 
     printf("Enter item 1: ");
@@ -354,7 +358,8 @@ void createNode(int n) {
     menu *temp, *newNode;
     temp = head;
 
-    for (i = 2; i <= n; i++) {
+    for (i = 2; i <= n; i++)
+    {
         newNode = (menu *)malloc(sizeof(menu));
 
         printf("Enter item %d: ", i);
@@ -369,7 +374,8 @@ void createNode(int n) {
     }
 }
 
-void insertBeg() {
+void insertBeg()
+{
     menu *newNode;
     newNode = (menu *)malloc(sizeof(menu));
     printf("Inserting item at the Start position...\n");
@@ -382,22 +388,24 @@ void insertBeg() {
     head = newNode;
 }
 
-void insertMid() {
+void insertMid()
+{
     int i, pos;
     menu *newNode, *temp, *current, *prev;
     newNode = (menu *)malloc(sizeof(menu));
 
     printf("Enter position where you want to insert your item: ");
     scanf("%d", &pos);
-    printf("Inserting item at the Middle position...\n");
 
-    printf("Enter item for Middle position: ");
+    printf("Enter item for %d position: ",pos);
     scanf("%s", newNode->data);
+
     printf("Enter price for item: ");
     scanf("%d", &newNode->price);
 
     temp = head;
-    for (i = 1; i < pos; i++) {
+    for (i = 1; i < pos; i++)
+    {
         prev = temp;
         current = temp->next;
         temp = temp->next;
@@ -406,7 +414,8 @@ void insertMid() {
     prev->next = newNode;
 }
 
-void insertEnd() {
+void insertEnd()
+{
     menu *temp, *newNode;
     newNode = (menu *)malloc(sizeof(menu));
     printf("Inserting item at the End position...\n");
@@ -417,19 +426,22 @@ void insertEnd() {
     scanf("%d", &newNode->price);
 
     temp = head;
-    while (temp->next != NULL) {
+    while (temp->next != NULL)
+    {
         temp = temp->next;
     }
     temp->next = newNode;
     newNode->next = NULL;
 }
 
-void display() {
+void display()
+{
     menu *temp;
     temp = head;
     printf("\nYour Items here: \n");
     int i = 1;
-    while (temp != NULL) {
+    while (temp != NULL)
+    {
         printf("%d. %s - %d\n", i, temp->data, temp->price);
         temp = temp->next;
         i++;
