@@ -187,7 +187,7 @@ int main()
 
         if(id == 1)
         {
-            printf("\n \t\t\t\t\tWelcome to our restaurent\n\n");
+            printf("\n \t\t\t\t\tWelcome to our restaurant\n\n");
 
             int choice = 0;
             while (choice != 4)
