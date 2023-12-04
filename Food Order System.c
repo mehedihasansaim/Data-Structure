@@ -32,7 +32,7 @@ node *top = NULL;
 
 void push()
 {
-    int num;
+    int num=0;
     while(num != -1)
     {
         int x, table_num;
@@ -53,6 +53,7 @@ void push()
 
         printf("\nEnter table number: ");
         scanf("%d", &table_num);
+        num = table_num;
         if(table_num == -1)
         {
             break;
@@ -65,7 +66,7 @@ void push()
         top = newNode;
         printf("\nAdd item-%d in your order list for table %d\n", x, table_num);
         printf("-----------------------------------------------------\n");
-        num = table_num;
+
     }
 }
 
